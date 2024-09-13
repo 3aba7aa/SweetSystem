@@ -1,4 +1,4 @@
-package org.example;
+package abd.sweetsystem;
 
 public class Constants {
     public static final String RECEIVER_DOESNT_EXIST = "receiver does not exist";

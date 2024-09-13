@@ -1,4 +1,4 @@
-package org.example;
+package abd.sweetsystem;
 
 public class StoreOwner extends OwnerAndSupplier {
     public static final String NOT_AN_INSTANCE_MESSAGE = "Not an instance";

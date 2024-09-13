@@ -1,9 +1,8 @@
-package org.example;
+package abd.sweetsystem;
 
-import static org.example.Constants.*;
-import java.util.ArrayList;
+import static abd.sweetsystem.Constants.*;
+
 import java.util.HashMap;
-import java.util.List;
 
 public class OwnerAndSupplier extends User {
 

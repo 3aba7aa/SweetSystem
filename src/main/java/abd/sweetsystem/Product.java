@@ -1,4 +1,4 @@
-package org.example;
+package abd.sweetsystem;
 
 public class Product {
     private final String barcode;

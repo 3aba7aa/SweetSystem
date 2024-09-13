@@ -1,4 +1,4 @@
-package org.example;
+package abd.sweetsystem;
 
 import java.util.ArrayList;
 import java.util.List;
