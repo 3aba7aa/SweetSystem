@@ -53,17 +53,15 @@ public class OwnerAndSupplier extends User {
     }
 
     public String updateProduct(String barcode, String name, String description, double price, int quantity) {
-        if (price < 0) return INVALID_PRICE_MESSAGE;
-        if (quantity < 0) return INVALID_QUANTITY_MESSAGE;
-        if(products.containsKey(barcode)) {
-            Product product = products.get(barcode);
-            product.setName(name);
-            product.setDescription(description);
-            product.setPrice(price);
-            product.setQuantity(quantity);
-            return SUCCESSFUL_OPERATION;
-        }
-        return INVALID_BARCODE;
+//        if (price < 0) return INVALID_PRICE_MESSAGE;
+//        if (quantity < 0) return INVALID_QUANTITY_MESSAGE;
+        if(!products.containsKey(barcode)) return INVALID_BARCODE;
+        Product product = products.get(barcode);
+        if(!name.equals("---"))product.setName(name);
+        if(!description.equals("---"))product.setDescription(description);
+        if(price > 0)product.setPrice(price);
+        if(quantity >= 0)product.setQuantity(quantity);
+        return SUCCESSFUL_OPERATION;
     }
 
     public String deleteProduct(String barcode) {
