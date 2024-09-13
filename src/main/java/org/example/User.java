@@ -1,9 +1,16 @@
 package org.example;
 
+import static org.example.Constants.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class User {
+
     protected static final HashMap<String, User> nameMap = new HashMap<>();
+    private final List<Message> sentMessages;
+    private final List<Message> unreadMessages;
+    private final List<Message> readMessages;
     private final String name;
     private String displayName;
     private String email;
@@ -19,6 +26,9 @@ public class User {
         this.password = password;
         this.address = address;
         this.phone = phone;
+        sentMessages = new ArrayList<>();
+        unreadMessages = new ArrayList<>();
+        readMessages = new ArrayList<>();
     }
 
     public HashMap<String, User> getNameMap() {
@@ -64,5 +74,45 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public static User getUser(String name) {
+        return nameMap.getOrDefault(name, null);
+    }
+
+    public List<Message> getSentMessages() {
+        return sentMessages;
+    }
+
+    public List<Message> getUnreadMessages() {
+        return unreadMessages;
+    }
+
+    public List<Message> getReadMessages() {
+        return readMessages;
+    }
+
+    public String sendMessage(String content, String name) {
+        User receiver = getUser(name);
+        if (receiver == null) {
+            return RECEIVER_DOESNT_EXIST;
+        }
+        Message message = new Message(getName(), name, content);
+        sentMessages.add(message);
+        receiver.receiveMessage(message);
+        return SUCCESSFUL_OPERATION;
+    }
+
+    public void receiveMessage(Message message) {
+        unreadMessages.add(message);
+    }
+
+    public void readUnreadMessages() {
+        while (!unreadMessages.isEmpty()) {
+            Message message = unreadMessages.get(unreadMessages.size() - 1);
+            System.out.println(message);
+            unreadMessages.remove(unreadMessages.size() - 1);
+            readMessages.add(message);
+        }
     }
 }

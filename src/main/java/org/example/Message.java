@@ -8,6 +8,7 @@ public class Message {
     String receiverName;
     LocalDateTime time;
     String content;
+
     public Message(String senderName, String receiverName, String content) {
         this.senderName = senderName;
         this.receiverName = receiverName;
